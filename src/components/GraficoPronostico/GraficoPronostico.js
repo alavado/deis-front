@@ -3,21 +3,28 @@ import datos from '../../data/output.json'
 import { Line } from 'react-chartjs-2'
 import './GraficoPronostico.css'
 
+const ceros = n => Array(n).fill(0)
+
+const obtenerSerieHistorica = servicios => {
+  const años = [2017, 2018, 2019]
+  const seriesAnuales = años.map(año => servicios.reduce((sumas, servicio) => {
+    return sumas.map((v, i) => v + servicio.historico[año][i])
+  }, ceros(servicios[0].historico[año].length)))
+  return seriesAnuales.reduce((s, h) => [...s, ...h], [])
+}
+
+const obtenerSeriePronostico = servicios => {
+  return servicios.reduce((sumas, servicio) => {
+    return sumas.map((v, i) => v + servicio.pronostico[i])
+  }, ceros(servicios[0].pronostico.length))
+}
+
 const GraficoPronostico = props => {
 
   const region = JSON.parse(props.region)
   const servicios = datos.filter(({servicio}) => region.servicios.includes(servicio))
-  console.log({servicios})
-  const historico = ['2017', '2018', '2019'].map(año => servicios.reduce((acumulado, servicio) => {
-    return acumulado.map((v, i) => v + servicio.historico[año][i])
-  }, Array(servicios[0].historico[año].length).fill(0)))
-  const pronostico = servicios.reduce((acumulado, servicio) => {
-    return acumulado.map((v, i) => v + servicio.pronostico[i])
-  }, Array(servicios[0].pronostico.length).fill(0))
-  console.log({historico})
-  console.log({pronostico})
-  const serieHistorica = [...historico[0], ...historico[1], ...historico[2]]
-  console.log({serieHistorica})
+  const serieHistorica = obtenerSerieHistorica(servicios)
+  const pronostico = obtenerSeriePronostico(servicios)
 
   const data = {
     labels: Array.from(Array(serieHistorica.length + pronostico.length).keys()),
