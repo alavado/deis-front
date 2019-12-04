@@ -5,12 +5,22 @@ import './GraficoPronostico.css'
 
 const GraficoPronostico = props => {
 
-  const datosServicio = datos.find(d => d.servicio === props.servicio)
-  const { historico, pronostico } = datosServicio
-  const datosHistoricos = [...historico["2017"], ...historico["2018"], ...historico["2019"]]
+  const region = JSON.parse(props.region)
+  const servicios = datos.filter(({servicio}) => region.servicios.includes(servicio))
+  console.log({servicios})
+  const historico = ['2017', '2018', '2019'].map(año => servicios.reduce((acumulado, servicio) => {
+    return acumulado.map((v, i) => v + servicio.historico[año][i])
+  }, Array(servicios[0].historico[año].length).fill(0)))
+  const pronostico = servicios.reduce((acumulado, servicio) => {
+    return acumulado.map((v, i) => v + servicio.pronostico[i])
+  }, Array(servicios[0].pronostico.length).fill(0))
+  console.log({historico})
+  console.log({pronostico})
+  const serieHistorica = [...historico[0], ...historico[1], ...historico[2]]
+  console.log({serieHistorica})
 
   const data = {
-    labels: Array.from(Array(datosHistoricos.length + pronostico.length).keys()),
+    labels: Array.from(Array(serieHistorica.length + pronostico.length).keys()),
     datasets: [
       {
         label: 'Histórico',
@@ -31,7 +41,7 @@ const GraficoPronostico = props => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [...historico["2017"], ...historico["2018"], ...historico["2019"]]
+        data: serieHistorica
       },
       {
         label: 'Pronóstico',
@@ -52,7 +62,7 @@ const GraficoPronostico = props => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [...Array.from(Array(datosHistoricos.length).keys()).map(v => null), ...pronostico]
+        data: [...serieHistorica.map(v => null), ...pronostico]
       }
     ]
   }
@@ -79,6 +89,7 @@ const GraficoPronostico = props => {
 
   return (
     <div className="contenedor-grafico">
+      <h1>Pronóstico para {region.nombre}</h1>
       <Line data={data} options={options} />
     </div>
   )

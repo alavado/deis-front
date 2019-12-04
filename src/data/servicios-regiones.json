@@ -1,0 +1,113 @@
+{
+  "regiones": [
+    {
+      "nombre": "Aisén del G. Carlos Ibáñez del Campo",
+      "servicios": [
+        "Aisén"
+      ]
+    },
+    {
+      "nombre": "Antofagasta",
+      "servicios": [
+        "Antofagasta"
+      ]
+    },
+    {
+      "nombre": "Arica y Parinacota",
+      "servicios": [
+        "Arica"
+      ]
+    },
+    {
+      "nombre": "Atacama",
+      "servicios": [
+        "Atacama"
+      ]
+    },
+    {
+      "nombre": "Biobío",
+      "servicios": [
+        "Concepción",
+        "Talcahuano",
+        "Bíobío",
+        "Arauco"
+      ]
+    },
+    {
+      "nombre": "Coquimbo",
+      "servicios": [
+        "Coquimbo"
+      ]
+    },
+    {
+      "nombre": "La Araucanía",
+      "servicios": [
+        "Araucanía Sur",
+        "Araucanía Norte"
+      ]
+    },
+    {
+      "nombre": "Libertador General Bernardo O’Higgins",
+      "servicios": [
+        "Libertador B. O'Higgins"
+      ]
+    },
+    {
+      "nombre": "Los Lagos",
+      "servicios": [
+        "Osorno",
+        "Del Reloncaví",
+        "Chiloé"
+      ]
+    },
+    {
+      "nombre": "Los Ríos",
+      "servicios": [
+        "Valdivia"
+      ]
+    },
+    {
+      "nombre": "Magallanes y de la Antártica Chilena",
+      "servicios": [
+        "Magallanes"
+      ]
+    },
+    {
+      "nombre": "Maule",
+      "servicios": [
+        "Del Maule"
+      ]
+    },
+    {
+      "nombre": "Metropolitana de Santiago",
+      "servicios": [
+        "Metropolitano Norte",
+        "Metropolitano Occidente",
+        "Metropolitano Central",
+        "Metropolitano Oriente",
+        "Metropolitano Sur",
+        "Metropolitano Suroriente"
+      ]
+    },
+    {
+      "nombre": "Ñuble",
+      "servicios": [
+        "Ñuble"
+      ]
+    },
+    {
+      "nombre": "Tarapacá",
+      "servicios": [
+        "Iquique"
+      ]
+    },
+    {
+      "nombre": "Valparaíso",
+      "servicios": [
+        "Valparaíso San Antonio",
+        "Viña Del Mar Quillota",
+        "Aconcagua"
+      ]
+    }
+  ]
+}

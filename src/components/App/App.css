@@ -1,3 +1,5 @@
 .App {
-  padding: 32px;
+  display: flex;
+  font-family: "Open Sans", Arial, sans-serif;
+  flex-direction: column;
 }
