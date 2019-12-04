@@ -2,8 +2,7 @@ import React from 'react'
 import datos from '../../data/output.json'
 import { Line } from 'react-chartjs-2'
 import './GraficoPronostico.css'
-
-const ceros = n => Array(n).fill(0)
+import { ceros } from '../../helpers/general.js'
 
 const obtenerSerieHistorica = servicios => {
   const años = [2017, 2018, 2019]

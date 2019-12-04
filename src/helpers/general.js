@@ -1,0 +1,1 @@
+export const ceros = n => Array(n).fill(0)
