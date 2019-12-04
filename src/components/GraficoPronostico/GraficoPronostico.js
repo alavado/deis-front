@@ -55,10 +55,31 @@ const GraficoPronostico = props => {
         data: [...Array.from(Array(datosHistoricos.length).keys()).map(v => null), ...pronostico]
       }
     ]
-  };
+  }
+
+  const options = {
+    scales: {
+      xAxes: [{
+        gridLines: {
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Semana'
+        }
+      }],
+      yAxes: [{
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'N° de atenciones'
+        }
+      }],
+    },
+  }
+
   return (
     <div className="contenedor-grafico">
-      <Line data={data} />
+      <Line data={data} options={options} />
     </div>
   )
 }
