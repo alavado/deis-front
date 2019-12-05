@@ -50,6 +50,11 @@ const Mapa = () => {
 
   const clickEnRegion = e => {
     const idPathRegion = e.target.id
+    const regionPreviamenteSeleccionada = document.getElementsByClassName('region-mapa-seleccionada')[0]
+    if (regionPreviamenteSeleccionada) {
+      regionPreviamenteSeleccionada.classList.remove('region-mapa-seleccionada')
+    }
+    e.target.classList.add('region-mapa-seleccionada')
     let nombreRegion = obtenerNombreRegion(idPathRegion)
     dispatch(seleccionarRegion(nombreRegion))
   }

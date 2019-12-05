@@ -1,7 +1,13 @@
 .contenedor-mapa svg path {
   cursor: pointer;
-  fill: red;
+  fill: #fdf9d2;
+  transition: fill .25s ease-in-out;
 }
 
 .contenedor-mapa svg path:hover {
+  fill: red;
+}
+
+.contenedor-mapa svg path.region-mapa-seleccionada {
+  fill: green;
 }
