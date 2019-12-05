@@ -1,5 +1,7 @@
-.contenedor-mapa {
-  width: 200px;
-  height: 200px;
-  background-color: red;
+.contenedor-mapa svg path {
+  cursor: pointer;
+}
+
+.contenedor-mapa svg path:hover {
+  fill: red;
 }

@@ -1,5 +1,6 @@
 .App {
   display: flex;
   font-family: "Open Sans", Arial, sans-serif;
-  flex-direction: column;
+  flex-direction: row;
+  width: 800px;
 }
