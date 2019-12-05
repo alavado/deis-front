@@ -5,72 +5,58 @@ import { useDispatch } from 'react-redux'
 import './Mapa.css'
 import { seleccionarRegion } from '../../redux/actions'
 
+const obtenerNombreRegion = idPath => {
+  switch (idPath.substring(0, idPath.indexOf('-'))) {
+    case 'AricaParinacota':
+      return 'Arica y Parinacota'
+    case 'Tarapaca':
+      return 'Tarapacá'
+    case 'Antofagasta':
+      return 'Antofagasta'
+    case 'Atacama':
+      return 'Atacama'
+    case 'Coquimbo':
+      return 'Coquimbo'
+    case 'Valparaiso':
+      return 'Valparaíso'
+    case 'Metropolitana':
+      return 'Metropolitana de Santiago'
+    case 'OHiggins':
+      return 'Libertador General Bernardo O’Higgins'
+    case 'Maule':
+      return 'Maule'
+    case 'Nuble':
+      return 'Ñuble'
+    case 'Biobio':
+      return 'Biobío'
+    case 'Araucania':
+      return 'La Araucanía'
+    case 'Los_Rios':
+      return 'Los Ríos'
+    case 'Los_Lagos':
+      return 'Los Lagos'
+    case 'Aisen':
+      return 'Aisén del G. Carlos Ibáñez del Campo'
+    case 'Magallanes':
+      return 'Magallanes y de la Antártica Chilena'
+    default:
+      return 'Chile'
+  }
+}
+
 const Mapa = () => {
 
   const dispatch = useDispatch()
 
-  const test = e => {
-    const idPath = e.target.id
-    console.log(idPath.substring(0, idPath.indexOf('-')))
-    let nombreRegion
-    switch (idPath.substring(0, idPath.indexOf('-'))) {
-      case 'AricaParinacota':
-        nombreRegion = 'Arica y Parinacota'
-        break
-      case 'Tarapaca':
-        nombreRegion = 'Tarapacá'
-        break
-      case 'Antofagasta':
-        nombreRegion = 'Antofagasta'
-        break
-      case 'Atacama':
-        nombreRegion = 'Atacama'
-        break
-      case 'Coquimbo':
-        nombreRegion = 'Coquimbo'
-        break
-      case 'Valparaiso':
-        nombreRegion = 'Valparaíso'
-        break
-      case 'Metropolitana':
-        nombreRegion = 'Metropolitana de Santiago'
-        break
-      case 'OHiggins':
-        nombreRegion = 'Libertador General Bernardo O’Higgins'
-        break
-      case 'Maule':
-        nombreRegion = 'Maule'
-        break
-      case 'Nuble':
-        nombreRegion = 'Ñuble'
-        break
-      case 'Biobio':
-        nombreRegion = 'Biobío'
-        break
-      case 'Araucania':
-        nombreRegion = 'La Araucanía'
-        break
-      case 'Los_Rios':
-        nombreRegion = 'Los Ríos'
-        break
-      case 'Los_Lagos':
-        nombreRegion = 'Los Lagos'
-        break
-      case 'Aisen':
-        nombreRegion = 'Aisén del G. Carlos Ibáñez del Campo'
-        break
-      case 'Magallanes':
-        nombreRegion = 'Magallanes y de la Antártica Chilena'
-        break
-      default:
-        nombreRegion = 'Chile'
-    }
+  const clickEnRegion = e => {
+    const idPathRegion = e.target.id
+    let nombreRegion = obtenerNombreRegion(idPathRegion)
     dispatch(seleccionarRegion(nombreRegion))
   }
 
   return (
     <div className="contenedor-mapa">
-      <ReactSVG src={mapa} onClick={test}/>
+      <ReactSVG src={mapa} onClick={clickEnRegion}/>
     </div>
   )
 }
