@@ -1,7 +1,7 @@
 .contenedor-mapa svg path {
   cursor: pointer;
+  fill: red;
 }
 
 .contenedor-mapa svg path:hover {
-  fill: red;
 }

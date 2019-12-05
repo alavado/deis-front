@@ -56,7 +56,10 @@ const Mapa = () => {
 
   return (
     <div className="contenedor-mapa">
-      <ReactSVG src={mapa} onClick={clickEnRegion}/>
+      <ReactSVG
+        src={mapa}
+        onClick={clickEnRegion}
+      />
     </div>
   )
 }

@@ -19,6 +19,19 @@ const obtenerSeriePronostico = servicios => {
   }, ceros(servicios[0].pronostico.length))
 }
 
+const obtenerTitulo = nombreRegion => {
+  if (nombreRegion === 'Chile') {
+    return `Pronóstico para ${nombreRegion}`
+  }
+  else if (nombreRegion === 'Metropolitana de Santiago') {
+    return `Pronóstico para la Región ${nombreRegion}`
+  }
+  else if (['Libertador General Bernardo O’Higgins', 'Maule', 'Biobío'].includes(nombreRegion)) {
+    return `Pronóstico para la Región del ${nombreRegion}`
+  }
+  return `Pronóstico para la Región de ${nombreRegion}`
+}
+
 const GraficoPronostico = () => {
 
   const region = useSelector(state => state.region.region)
@@ -96,7 +109,7 @@ const GraficoPronostico = () => {
 
   return (
     <div className="contenedor-grafico">
-      <h1>Pronóstico para {region.nombre}</h1>
+      <h1>{obtenerTitulo(region.nombre)}</h1>
       <Line data={data} options={options} />
     </div>
   )
