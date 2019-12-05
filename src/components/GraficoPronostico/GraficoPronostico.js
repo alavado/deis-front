@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2'
 import './GraficoPronostico.css'
 import { ceros } from '../../helpers/general.js'
 import { useSelector } from 'react-redux'
+import 'chartjs-plugin-annotation'
 
 const obtenerSerieHistorica = servicios => {
   const años = [2017, 2018, 2019]
@@ -73,14 +74,14 @@ const GraficoPronostico = () => {
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
+        pointBorderColor: 'grey',
+        pointBackgroundColor: '#C04BC0',
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBackgroundColor: '#C04BC0',
         pointHoverBorderColor: 'rgba(220,220,220,1)',
         pointHoverBorderWidth: 2,
-        pointRadius: 1,
+        pointRadius: 3,
         pointHitRadius: 10,
         data: [...serieHistorica.map(v => null), ...pronostico]
       }
@@ -105,6 +106,63 @@ const GraficoPronostico = () => {
         }
       }],
     },
+    annotation: {
+      drawTime: 'afterDatasetsDraw',
+      events: ['click'],
+      dblClickSpeed: 350,
+      annotations: [{
+        id: 'vline',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: 52,
+        borderColor: 'grey',
+        borderWidth: 2,
+        label: {
+          backgroundColor: 'grey',
+          content: '2018',
+          enabled: true
+        },
+        onClick: function(e) {
+          // The annotation is is bound to the `this` variable
+          console.log('Annotation', e.type, this);
+        }
+      },{
+        id: 'vline2',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: 104,
+        borderColor: 'grey',
+        borderWidth: 2,
+        label: {
+          backgroundColor: 'grey',
+          content: '2019',
+          enabled: true
+        },
+        onClick: function(e) {
+          // The annotation is is bound to the `this` variable
+          console.log('Annotation', e.type, this);
+        }
+      },{
+        id: 'vline3',
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: serieHistorica.length - 1,
+        borderColor: 'grey',
+        borderWidth: 2,
+        label: {
+          backgroundColor: 'grey',
+          content: 'Semana actual',
+          enabled: true
+        },
+        onClick: function(e) {
+          // The annotation is is bound to the `this` variable
+          console.log('Annotation', e.type, this);
+        }
+      }]
+    }
   }
 
   return (
