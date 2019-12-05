@@ -3,6 +3,7 @@ import datos from '../../data/output.json'
 import { Line } from 'react-chartjs-2'
 import './GraficoPronostico.css'
 import { ceros } from '../../helpers/general.js'
+import { useSelector } from 'react-redux'
 
 const obtenerSerieHistorica = servicios => {
   const años = [2017, 2018, 2019]
@@ -18,9 +19,9 @@ const obtenerSeriePronostico = servicios => {
   }, ceros(servicios[0].pronostico.length))
 }
 
-const GraficoPronostico = props => {
+const GraficoPronostico = () => {
 
-  const region = JSON.parse(props.region)
+  const region = useSelector(state => state.region.region)
   const servicios = datos.filter(({servicio}) => region.servicios.includes(servicio))
   const serieHistorica = obtenerSerieHistorica(servicios)
   const pronostico = obtenerSeriePronostico(servicios)

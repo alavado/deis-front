@@ -1,6 +1,6 @@
 import { SELECCIONAR_REGION } from "./actionTypes";
 
-export const seleccionarRegion = region => ({
+export const seleccionarRegion = nombreRegion => ({
   type: SELECCIONAR_REGION,
-  payload: region
+  payload: { nombreRegion }
 })

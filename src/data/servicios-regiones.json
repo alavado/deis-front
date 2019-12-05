@@ -1,6 +1,40 @@
 {
   "regiones": [
     {
+      "nombre": "Chile",
+      "servicios": [
+        "Aisén",
+        "Antofagasta",
+        "Arica",
+        "Atacama",
+        "Concepción",
+        "Talcahuano",
+        "Bíobío",
+        "Arauco",
+        "Coquimbo",
+        "Araucanía Sur",
+        "Araucanía Norte",
+        "Libertador B. O'Higgins",
+        "Osorno",
+        "Del Reloncaví",
+        "Chiloé",
+        "Valdivia",
+        "Magallanes",
+        "Del Maule",
+        "Metropolitano Norte",
+        "Metropolitano Occidente",
+        "Metropolitano Central",
+        "Metropolitano Oriente",
+        "Metropolitano Sur",
+        "Metropolitano Suroriente",
+        "Ñuble",
+        "Iquique",
+        "Valparaíso San Antonio",
+        "Viña Del Mar Quillota",
+        "Aconcagua"
+      ]
+    },
+    {
       "nombre": "Aisén del G. Carlos Ibáñez del Campo",
       "servicios": [
         "Aisén"
