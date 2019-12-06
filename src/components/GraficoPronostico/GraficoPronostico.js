@@ -89,6 +89,12 @@ const GraficoPronostico = () => {
   }
 
   const options = {
+    tooltips: {
+      callbacks: {
+        label: item => `${item.yLabel.toLocaleString('de-DE', {})} atenciones`,
+        title: item => `Semana ${(1 + item[0].xLabel % 52)}`
+      }
+    },
     scales: {
       xAxes: [{
         gridLines: {
@@ -97,14 +103,23 @@ const GraficoPronostico = () => {
         scaleLabel: {
           display: true,
           labelString: 'Semana'
-        }
+        },
+        ticks: {
+          callback: function(v, i, vs) { return i % 4 === 0 ? (i % 52 + 1) : '' },
+          autoSkip: false
+        },
       }],
       yAxes: [{
         display: true,
         scaleLabel: {
           display: true,
-          labelString: 'N° de atenciones'
-        }
+          labelString: 'Atenciones'
+        },
+        ticks: {
+          callback: function(v, i, vs) { return v.toLocaleString('de-DE', {}) },
+          maxRotation: 0,
+          autoSkip: false
+        },
       }],
     },
     annotation: {
@@ -170,7 +185,7 @@ const GraficoPronostico = () => {
     <div className="contenedor-grafico">
       <h1>{obtenerTitulo(region.nombre)}</h1>
       <div className="pronostico-semanal">
-        Esta semana se pronostican <span>{pronostico[0]} atenciones</span>por enfermedades respiratorias
+        Para la semana en curso se pronostican <span>{pronostico[0].toLocaleString('de-DE', {})} atenciones</span>por enfermedades respiratorias
       </div>
       <h2>Atenciones en los últimos 3 años y pronóstico completo</h2>
       <Line data={data} options={options} />
