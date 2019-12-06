@@ -1,3 +1,31 @@
 .contenedor-grafico {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedor-grafico h1 {
+  font-size: 1.5em;
+}
+
+.contenedor-grafico h2 {
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+.pronostico-semanal {
+  margin-top: 16px;
+  width: 300px;
+  text-align: center;
+  background-color: #233D88;
+  border-radius: 16px;
+  color: white;
+  padding: 20px 4px;
+}
+
+.pronostico-semanal span {
+  font-size: 2em;
+  display: block;
+  margin: 10px;
 }

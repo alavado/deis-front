@@ -1,3 +1,6 @@
+.contenedor-mapa {
+}
+
 .contenedor-mapa svg path {
   cursor: pointer;
   fill: #fdf9d2;
@@ -5,9 +8,9 @@
 }
 
 .contenedor-mapa svg path:hover {
-  fill: red;
+  fill: rgb(241, 178, 99);
 }
 
 .contenedor-mapa svg path.region-mapa-seleccionada {
-  fill: green;
+  fill: #F29D37;
 }

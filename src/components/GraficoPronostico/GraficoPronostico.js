@@ -92,6 +92,7 @@ const GraficoPronostico = () => {
     scales: {
       xAxes: [{
         gridLines: {
+          display: false
         },
         scaleLabel: {
           display: true,
@@ -168,6 +169,10 @@ const GraficoPronostico = () => {
   return (
     <div className="contenedor-grafico">
       <h1>{obtenerTitulo(region.nombre)}</h1>
+      <div className="pronostico-semanal">
+        Esta semana se pronostican <span>{pronostico[0]} atenciones</span>por enfermedades respiratorias
+      </div>
+      <h2>Atenciones en los últimos 3 años y pronóstico completo</h2>
       <Line data={data} options={options} />
     </div>
   )
