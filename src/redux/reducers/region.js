@@ -11,7 +11,6 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SELECCIONAR_REGION: {
       const { nombreRegion } = action.payload
-      console.log(regiones)
       return {
         ...state,
         region: regiones.find(({nombre}) => nombre === nombreRegion)
