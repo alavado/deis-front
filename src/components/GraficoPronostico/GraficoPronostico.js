@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import 'chartjs-plugin-annotation'
 
 const obtenerSerieHistorica = servicios => {
-  const años = [2017, 2018, 2019]
+  const años = [2018, 2019, 2020]
   const seriesAnuales = años.map(año => servicios.reduce((sumas, servicio) => {
     return sumas.map((v, i) => v + servicio.historico[año][i])
   }, ceros(servicios[0].historico[año].length)))
@@ -95,6 +95,9 @@ const GraficoPronostico = () => {
         title: item => `Semana ${(1 + item[0].xLabel % 52)}`
       }
     },
+    legend: {
+      position: 'right'
+    },
     scales: {
       xAxes: [{
         gridLines: {
@@ -136,7 +139,7 @@ const GraficoPronostico = () => {
         borderWidth: 2,
         label: {
           backgroundColor: 'grey',
-          content: '2018',
+          content: '2019',
           enabled: true
         },
         onClick: function(e) {
@@ -153,31 +156,33 @@ const GraficoPronostico = () => {
         borderWidth: 2,
         label: {
           backgroundColor: 'grey',
-          content: '2019',
+          content: '2020',
           enabled: true
         },
         onClick: function(e) {
           // The annotation is is bound to the `this` variable
           console.log('Annotation', e.type, this);
         }
-      },{
-        id: 'vline3',
-        type: 'line',
-        mode: 'vertical',
-        scaleID: 'x-axis-0',
-        value: serieHistorica.length - 1,
-        borderColor: 'grey',
-        borderWidth: 2,
-        label: {
-          backgroundColor: 'grey',
-          content: 'Semana actual',
-          enabled: true
-        },
-        onClick: function(e) {
-          // The annotation is is bound to the `this` variable
-          console.log('Annotation', e.type, this);
-        }
-      }]
+      },
+      // {
+      //   id: 'vline3',
+      //   type: 'line',
+      //   mode: 'vertical',
+      //   scaleID: 'x-axis-0',
+      //   value: serieHistorica.length - 1,
+      //   borderColor: 'grey',
+      //   borderWidth: 2,
+      //   label: {
+      //     backgroundColor: 'grey',
+      //     content: 'Semana actual',
+      //     enabled: true
+      //   },
+      //   onClick: function(e) {
+      //     // The annotation is is bound to the `this` variable
+      //     console.log('Annotation', e.type, this);
+      //   }
+      // }
+      ]
     }
   }
 
@@ -185,9 +190,9 @@ const GraficoPronostico = () => {
     <div className="contenedor-grafico">
       <h1>{obtenerTitulo(region.nombre)}</h1>
       <div className="pronostico-semanal">
-        Para la semana en curso se pronostican <span>{pronostico[0].toLocaleString('de-DE', {})} atenciones</span>por enfermedades respiratorias
+        Para esta semana se pronostican <span>{pronostico[0].toLocaleString('de-DE', {})} atenciones</span>por enfermedades respiratorias
       </div>
-      <h2>Atenciones en los últimos 3 años y pronóstico completo</h2>
+      {/* <h2>Atenciones en los últimos 3 años y pronóstico completo</h2> */}
       <Line data={data} options={options} />
     </div>
   )

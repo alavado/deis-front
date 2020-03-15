@@ -1,6 +1,17 @@
 .App {
   display: flex;
   font-family: "Open Sans", Arial, sans-serif;
-  flex-direction: row;
+  flex-direction: column;
   width: 770px;
+  padding: 32px;
+}
+
+.App h1 {
+  font-size: 1.5em;
+  margin-bottom: 16px;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: row;
 }
